@@ -353,7 +353,7 @@
             <zipfileset src="build/extLibs/gui.jar" excludes="META-INF/*.RSA,META-INF/*.SF,META-INF/*.DSA" />
         	<zipfileset src="lib/ant/eclipse/org.eclipse.swt.win32.win32.x86_64_3.114.100.v20200604-0951.jar" excludes="META-INF/*.RSA,META-INF/*.SF,META-INF/*.DSA" />
             <manifest>
-                <attribute name="Main-Class" value="org.deidentifier.arx.gui.Main" />
+                <attribute name="Main-Class" value="gui.Main" />
             </manifest>
         </jar>
     </target>
@@ -365,7 +365,7 @@
             <zipfileset src="build/extLibs/gui.jar" excludes="META-INF/*.RSA,META-INF/*.SF,META-INF/*.DSA" />
         	<zipfileset src="lib/ant/eclipse/org.eclipse.swt.gtk.linux.x86_64_3.114.100.v20200604-0951.jar" excludes="META-INF/*.RSA,META-INF/*.SF,META-INF/*.DSA" />
             <manifest>
-                <attribute name="Main-Class" value="org.deidentifier.arx.gui.Main" />
+                <attribute name="Main-Class" value="gui.Main" />
             </manifest>
         </jar>
     </target>
@@ -377,7 +377,7 @@
             <zipfileset src="build/extLibs/gui.jar" excludes="META-INF/*.RSA,META-INF/*.SF,META-INF/*.DSA" />
         	<zipfileset src="lib/ant/eclipse/org.eclipse.swt.cocoa.macosx.x86_64_3.114.100.v20200604-0951.jar" excludes="META-INF/*.RSA,META-INF/*.SF,META-INF/*.DSA" />
             <manifest>
-                <attribute name="Main-Class" value="org.deidentifier.arx.gui.Main" />
+                <attribute name="Main-Class" value="gui.Main" />
             </manifest>
         </jar>
     </target>
