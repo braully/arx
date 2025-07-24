@@ -59,7 +59,7 @@ public class RiskAnalyze {
         System.out.println("\n - Input data");
         print(data.getHandle().getView());
         System.out.println("\n - Risk analysis:");
-        analyzeData(data.getHandle(), 0.001d);
+        analyzeData(data.getHandle(), 0.5d);
     }
 
     /**

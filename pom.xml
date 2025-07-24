@@ -25,7 +25,7 @@
         <finalName>${project.artifactId}-${project.version}-${envClassifier}</finalName>
         <!--<testSourceDirectory>src/test</testSourceDirectory>-->
         <resources>
-<!--            <resource>
+            <!--            <resource>
                 <directory>src/gui</directory>
                 <includes>
                     <include>**/*.properties</include>
@@ -48,7 +48,7 @@
             </resource>
         </resources>
         <plugins>
-<!--            <plugin>
+            <!--            <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>build-helper-maven-plugin</artifactId>
                 <version>3.0.0</version>
@@ -78,7 +78,7 @@
                     <target>1.8</target>
                 </configuration>
             </plugin>
-<!--            <plugin>
+            <!--            <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-shade-plugin</artifactId>
                 <version>3.1.1</version>
@@ -94,7 +94,7 @@
                         <configuration>
                             <transformers>
                                 <transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
-                                    <mainClass>org.deidentifier.arx.gui.Main</mainClass>
+                                    <mainClass>gui.Main</mainClass>
                                 </transformer>
                             </transformers>
                             <filters>
@@ -318,7 +318,7 @@
                 </exclusion>
             </exclusions>
         </dependency>
-<!--        <dependency>
+        <!--        <dependency>
             <groupId>com.github.ralfstuckert.pdfbox-layout</groupId>
             <artifactId>pdfbox2-layout</artifactId>
             <version>1.0.1</version>
@@ -414,7 +414,7 @@
         </dependency>
 
         <!--local dependencies-->
-<!--        <dependency>
+        <dependency>
             <groupId>de.linearbits</groupId>
             <artifactId>libjhc</artifactId>
             <version>swt</version>
@@ -424,6 +424,12 @@
                     <artifactId>*</artifactId>
                 </exclusion>
             </exclusions>
+        </dependency>
+        
+<!--        <dependency>
+            <groupId>org.eclipse.platform</groupId>
+            <artifactId>org.eclipse.swt.gtk.linux.x86_64</artifactId>
+            <version>3.130.0</version>
         </dependency>-->
         <dependency>
             <groupId>de.linearbits</groupId>
@@ -502,7 +508,7 @@
                 </exclusion>
             </exclusions>
         </dependency>
-<!--        <dependency>
+        <dependency>
             <groupId>org.swtchart</groupId>
             <artifactId>ext</artifactId>
             <version>0.8.0.v20120301</version>
@@ -600,7 +606,7 @@
                     <artifactId>*</artifactId>
                 </exclusion>
             </exclusions>
-        </dependency>-->
+        </dependency>
         <dependency>
             <groupId>org.eclipse.nebula.visualization</groupId>
             <artifactId>widgets</artifactId>
