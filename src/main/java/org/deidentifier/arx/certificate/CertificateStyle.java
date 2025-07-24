@@ -49,7 +49,7 @@ public class CertificateStyle { // NO_UCD
     /** Style information */
     private float      vMargin        = 75;
     /** Style information */
-    private LayoutHint titleHint      = VerticalLayoutHint.CENTER;
+    private LayoutHint titleHint      = LayoutHint.CENTER;
     /** Style information */
     private BaseFont   textFont       = BaseFont.Helvetica;
     /** Style information */

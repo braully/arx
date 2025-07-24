@@ -52,9 +52,9 @@ public class ElementList implements Element {
     /** Style */
     private final String        bulletEven = CompatibilityHelper.getBulletCharacter(2) + " ";
     /** Style */
-    private final Enumerator    enumerator;
+    private  Enumerator    enumerator;
     /** Style */
-    private final String        separator;
+    private  String        separator;
 
     /**
      * Creates a new list
@@ -62,24 +62,24 @@ public class ElementList implements Element {
      */
     public ElementList(ListStyle style) {
         this.style = style;
-        switch (style) {
-        case ROMAN:
-            enumerator = new RomanEnumerator();
+//        switch (style) {
+//        case ROMAN:
+//            enumerator = new RomanEnumerator();
+//            separator = ". ";
+//            break;
+//        case ALPHABETICAL:
+//            enumerator = new AlphabeticEnumerator();
+//            separator = ") ";
+//            break;
+//        case LOWERCASE_ALPHABETICAL:
+//            enumerator = new LowerCaseAlphabeticEnumerator();
+//            separator = ") ";
+//            break;
+//        default:
+//            enumerator = new ArabicEnumerator();
             separator = ". ";
-            break;
-        case ALPHABETICAL:
-            enumerator = new AlphabeticEnumerator();
-            separator = ") ";
-            break;
-        case LOWERCASE_ALPHABETICAL:
-            enumerator = new LowerCaseAlphabeticEnumerator();
-            separator = ") ";
-            break;
-        default:
-            enumerator = new ArabicEnumerator();
-            separator = ". ";
-            break;
-        }
+//            break;
+//        }
     }
     
     /**
@@ -127,8 +127,8 @@ public class ElementList implements Element {
                 ((ElementList)item).render(target, indent+1, style);
             } else if (item instanceof ElementText) {
                 Paragraph paragraph = new Paragraph();
-                paragraph.add(new Indent(getListItemIndicator(indent), offset, SpaceUnit.pt, style.getTextSize(),
-                                         getListItemIndicatorFont(style).getPlainFont(), Alignment.Right));
+//                paragraph.add(new Indent(getListItemIndicator(indent), offset, SpaceUnit.pt, style.getTextSize(),
+//                                         getListItemIndicatorFont(style).getPlainFont(), Alignment.Right));
                 paragraph.addMarkup(((ElementText)item).getText(), style.getTextSize(), style.getTextFont());
                 target.add(paragraph);
             } else {

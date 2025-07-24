@@ -5,7 +5,11 @@
 
     <groupId>org.deidentifier.arx</groupId>
     <artifactId>arx</artifactId>
-    <version>3.9.2</version>
+    <version>3.9.1</version>
+    
+    <properties>
+        <osgi.platform>gtk.linux.x86_64</osgi.platform>    
+    </properties>
 
     <repositories>
         <repository>
@@ -19,9 +23,9 @@
     </repositories>
     <build>
         <finalName>${project.artifactId}-${project.version}-${envClassifier}</finalName>
-        <testSourceDirectory>src/test</testSourceDirectory>
+        <!--<testSourceDirectory>src/test</testSourceDirectory>-->
         <resources>
-            <resource>
+<!--            <resource>
                 <directory>src/gui</directory>
                 <includes>
                     <include>**/*.properties</include>
@@ -31,7 +35,7 @@
                     <include>**/*.txt</include>
                     <include>**/*.r</include>
                 </includes>
-            </resource>
+            </resource>-->
             <resource>
                 <directory>src/main</directory>
                 <includes>
@@ -44,7 +48,7 @@
             </resource>
         </resources>
         <plugins>
-            <plugin>
+<!--            <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>build-helper-maven-plugin</artifactId>
                 <version>3.0.0</version>
@@ -64,7 +68,7 @@
                         </configuration>
                     </execution>
                 </executions>
-            </plugin>
+            </plugin>-->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
@@ -74,13 +78,13 @@
                     <target>1.8</target>
                 </configuration>
             </plugin>
-            <plugin>
+<!--            <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-shade-plugin</artifactId>
                 <version>3.1.1</version>
                 <configuration>
-        			<createDependencyReducedPom>false</createDependencyReducedPom>
-   				</configuration>
+                    <createDependencyReducedPom>false</createDependencyReducedPom>
+                </configuration>
                 <executions>
                     <execution>
                         <phase>package</phase>
@@ -106,7 +110,7 @@
                         </configuration>
                     </execution>
                 </executions>
-            </plugin>
+            </plugin>-->
         </plugins>
 
         <testResources>
@@ -151,10 +155,10 @@
             </exclusions>
         </dependency>
         <dependency>
-    	<groupId>org.apache.commons</groupId>
-    		<artifactId>commons-lang3</artifactId>
-    		<version>3.12.0</version>
-		</dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+            <version>3.12.0</version>
+        </dependency>
         <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-math3</artifactId>
@@ -223,16 +227,16 @@
             </exclusions>
         </dependency>
         <dependency>
-			<groupId>org.slf4j</groupId>
-			<artifactId>slf4j-api</artifactId>
-			<version>1.7.13</version>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <version>1.7.13</version>
             <exclusions>
                 <exclusion>
                     <groupId>*</groupId>
                     <artifactId>*</artifactId>
                 </exclusion>
             </exclusions>
-		</dependency>
+        </dependency>
         <dependency>
             <groupId>org.apache.logging.log4j</groupId>
             <artifactId>log4j-core</artifactId>
@@ -248,17 +252,17 @@
             <artifactId>log4j-1.2-api</artifactId>
             <version>2.17.2</version>
         </dependency>
-		<dependency>
-			<groupId>com.google.guava</groupId>
-			<artifactId>guava</artifactId>
-			<version>18.0</version>
+        <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+            <version>18.0</version>
             <exclusions>
                 <exclusion>
                     <groupId>*</groupId>
                     <artifactId>*</artifactId>
                 </exclusion>
             </exclusions>
-		</dependency>
+        </dependency>
         <dependency>
             <groupId>org.apache.mahout</groupId>
             <artifactId>mahout-core</artifactId>
@@ -314,17 +318,17 @@
                 </exclusion>
             </exclusions>
         </dependency>
-        <dependency>
+<!--        <dependency>
             <groupId>com.github.ralfstuckert.pdfbox-layout</groupId>
             <artifactId>pdfbox2-layout</artifactId>
-            <version>1.0.0</version>
+            <version>1.0.1</version>
             <exclusions>
                 <exclusion>
                     <groupId>*</groupId>
                     <artifactId>*</artifactId>
                 </exclusion>
             </exclusions>
-        </dependency>
+        </dependency>-->
         <dependency>
             <groupId>org.apache.poi</groupId>
             <artifactId>poi</artifactId>
@@ -348,7 +352,7 @@
         <dependency>
             <groupId>org.postgresql</groupId>
             <artifactId>postgresql</artifactId>
-            <version>42.4.3</version>
+            <version>42.4.1</version>
             <exclusions>
                 <exclusion>
                     <groupId>*</groupId>
@@ -410,7 +414,7 @@
         </dependency>
 
         <!--local dependencies-->
-        <dependency>
+<!--        <dependency>
             <groupId>de.linearbits</groupId>
             <artifactId>libjhc</artifactId>
             <version>swt</version>
@@ -420,7 +424,7 @@
                     <artifactId>*</artifactId>
                 </exclusion>
             </exclusions>
-        </dependency>
+        </dependency>-->
         <dependency>
             <groupId>de.linearbits</groupId>
             <artifactId>jhpl</artifactId>
@@ -498,7 +502,7 @@
                 </exclusion>
             </exclusions>
         </dependency>
-        <dependency>
+<!--        <dependency>
             <groupId>org.swtchart</groupId>
             <artifactId>ext</artifactId>
             <version>0.8.0.v20120301</version>
@@ -596,7 +600,7 @@
                     <artifactId>*</artifactId>
                 </exclusion>
             </exclusions>
-        </dependency>
+        </dependency>-->
         <dependency>
             <groupId>org.eclipse.nebula.visualization</groupId>
             <artifactId>widgets</artifactId>
@@ -720,7 +724,7 @@
                 </dependency>
             </dependencies>
         </profile>
-	<profile>
+        <profile>
             <id>core</id>
             <activation>
                 <property>
@@ -729,7 +733,7 @@
                 </property>
             </activation>
             <build>
-        	<finalName>${project.artifactId}-${project.version}-${envClassifier}</finalName>
+                <finalName>${project.artifactId}-${project.version}-${envClassifier}</finalName>
                 <resources>
                     <resource>
                         <directory>src/main</directory>
@@ -777,8 +781,8 @@
                         <artifactId>maven-shade-plugin</artifactId>
                         <version>3.1.1</version>
                         <configuration>
-                			<createDependencyReducedPom>false</createDependencyReducedPom>
-           				</configuration>
+                            <createDependencyReducedPom>false</createDependencyReducedPom>
+                        </configuration>
                         <executions>
                             <execution>
                                 <phase>package</phase>

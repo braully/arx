@@ -43,6 +43,6 @@ public class ElementVerticalSpace implements Element {
 
     @Override
     public void render(Document target, int indent, CertificateStyle style) throws IOException {
-        target.add(new VerticalSpacer(space));
+//        target.add(new VerticalSpacer(space));
     }
 }

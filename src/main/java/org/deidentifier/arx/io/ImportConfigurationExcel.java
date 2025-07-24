@@ -225,7 +225,7 @@ public class ImportConfigurationExcel extends ImportConfigurationFile implements
             if (!column.isIndexSpecified()) {
                 boolean found = false;
                 for (int i = 0; i < row.getPhysicalNumberOfCells(); i++) {
-                    row.getCell(i).setCellType(Cell.CELL_TYPE_STRING);
+//                    row.getCell(i).setCellType(Cell.CELL_TYPE_STRING);
                     if (row.getCell(i).getStringCellValue().equals(column.getName())) {
                         found = true;
                         column.setIndex(i);
