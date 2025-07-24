@@ -21,7 +21,7 @@ import org.deidentifier.arx.risk.RiskModelSampleSummary;
  *
  * @author braully
  */
-public class RiskAnalyze extends Example {
+public class RiskAnalyze {
 
     /**
      * Entry point.
@@ -59,7 +59,7 @@ public class RiskAnalyze extends Example {
         System.out.println("\n - Input data");
         print(data.getHandle().getView());
         System.out.println("\n - Risk analysis:");
-        analyzeData(data.getHandle(), 0.5d);
+        analyzeData(data.getHandle(), 0.001d);
     }
 
     /**
