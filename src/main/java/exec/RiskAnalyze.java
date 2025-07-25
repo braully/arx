@@ -52,11 +52,12 @@ public class RiskAnalyze {
         // data.getDefinition().setAttributeType("zipcode",
         // AttributeType.QUASI_IDENTIFYING_ATTRIBUTE);
         String csvFile = "data/example.csv";
-        String[] quasiAtributes = new String[]{
-            "education", "workclass", "salary-class"
+        String[] quasiAtributes = new String[] {
+                "education", "workclass", "salary-class"
         };
-        String[] insesitiveAttibutes = new String[]{
-            "sex", "age", "race", "marital-status", "native-country", "occupation",};
+        String[] insesitiveAttibutes = new String[] {
+                "sex", "age", "race", "marital-status", "native-country", "occupation"
+        };
 
         Data data = Data.create(csvFile, StandardCharsets.UTF_8, ';');
         //// Data data = Data.create(csvFile, ';');
@@ -147,7 +148,7 @@ public class RiskAnalyze {
         System.out.println("Sample uniques: " + getPrecent(fractionOfUniqueTuples));
         System.out.println("Population uniques: " + getPrecent(fractionOfUniqueTuplesDankar));
         System.out.println("Population model: " + populationModel);
-        System.out.println("Quasi-identifiers: " + quasiIdentifiers);   
+        System.out.println("Quasi-identifiers: " + quasiIdentifiers);
 
     }
 

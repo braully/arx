@@ -738,12 +738,12 @@
                     <groupId>org.eclipse.platform</groupId>
                     <artifactId>org.eclipse.swt.gtk.linux.x86_64</artifactId>
                     <version>3.114.100</version>
-<!--                    <exclusions>
+                    <exclusions>
                         <exclusion>
                             <groupId>*</groupId>
                             <artifactId>*</artifactId>
                         </exclusion>
-                    </exclusions>-->
+                    </exclusions>
                 </dependency>
                 <dependency>
                     <groupId>org.eclipse.platform</groupId>
