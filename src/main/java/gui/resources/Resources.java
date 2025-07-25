@@ -14,7 +14,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package gui.resources;
 
 import java.io.BufferedReader;
@@ -51,20 +50,39 @@ import org.eclipse.swt.widgets.Shell;
  */
 public class Resources {
 
-    /** Messages */
-    private static final ResourceBundle MESSAGES_BUNDLE = ResourceBundle.getBundle("gui.resources.messages"); //$NON-NLS-1$
+    /**
+     * Messages
+     */
+    private static ResourceBundle MESSAGES_BUNDLE;
 
-    /** The splash. */
-    private static Image                splash          = null;
+    static {
+        try {
+            MESSAGES_BUNDLE = ResourceBundle.getBundle("gui.resources.messages");
+        } catch (Exception e) {
+            e.printStackTrace();
+            MESSAGES_BUNDLE = ResourceBundle.getBundle("gui.resources.messages");
+        }
+    } //$NON-NLS-1$
 
-    /** The iconset. */
-    private static Image[]              iconset         = null;
+    /**
+     * The splash.
+     */
+    private static Image splash = null;
 
-    /** The image cache */
-    private final Map<String, Image>    imageCache;
+    /**
+     * The iconset.
+     */
+    private static Image[] iconset = null;
 
-    /** The charset used to read the license text */
-    private final static Charset        CHARSET         = StandardCharsets.UTF_8;
+    /**
+     * The image cache
+     */
+    private final Map<String, Image> imageCache;
+
+    /**
+     * The charset used to read the license text
+     */
+    private final static Charset CHARSET = StandardCharsets.UTF_8;
 
     /**
      * Returns the logo.
@@ -73,9 +91,9 @@ public class Resources {
      * @return
      */
     public static Image[] getIconSet(Display display) {
-        
+
         if (iconset == null) {
-            int[] sizes = new int[] { 16, 24, 32, 48, 64, 96, 128, 256 };
+            int[] sizes = new int[]{16, 24, 32, 48, 64, 96, 128, 256};
             iconset = new Image[sizes.length];
             int idx = 0;
             for (int size : sizes) {
@@ -84,10 +102,11 @@ public class Resources {
         }
         return iconset;
     }
-    
+
     /**
-     * Reads the content from the file license.txt located in the package gui.resources and
-     * returns the content as string.
+     * Reads the content from the file license.txt located in the package
+     * gui.resources and returns the content as string.
+     *
      * @return
      */
     public static String getLicenseText() {
@@ -115,11 +134,10 @@ public class Resources {
         }
         return content;
     }
-    
+
     /**
-     * 
-     * Returns the associated message
-     * TODO: Make this method non-static.
+     *
+     * Returns the associated message TODO: Make this method non-static.
      *
      * @param key
      * @return
@@ -131,7 +149,7 @@ public class Resources {
             return '!' + key + '!';
         }
     }
-    
+
     /**
      * Returns the splash image.
      *
@@ -144,9 +162,11 @@ public class Resources {
         }
         return splash;
     }
-    
+
     /**
-     * Loads an image. Adds a dispose listener that disposes the image when the display is disposed
+     * Loads an image. Adds a dispose listener that disposes the image when the
+     * display is disposed
+     *
      * @param display
      * @param resource
      * @return
@@ -173,28 +193,32 @@ public class Resources {
             }
         }
     }
-    
-    /** Logger. */
+
+    /**
+     * Logger.
+     */
     private final Logger logger = Logger.getRootLogger();
-    
-    /** Shell. */
-    private final Shell  shell;
-    
+
+    /**
+     * Shell.
+     */
+    private final Shell shell;
+
     /**
      * Creates a new instance.
      *
      * @param shell
      */
     public Resources(final Shell shell) {
-        
+
         this.shell = shell;
-        
+
         // Release config
         SimpleLayout layout = new SimpleLayout();
         ConsoleAppender consoleAppender = new ConsoleAppender(layout);
         logger.addAppender(consoleAppender);
         logger.setLevel(Level.OFF);
-        
+
         this.imageCache = new HashMap<String, Image>();
         this.shell.addDisposeListener(new DisposeListener() {
             @Override
@@ -210,9 +234,9 @@ public class Resources {
                 }
             }
         });
-        
+
     }
-    
+
     /**
      * Returns the display.
      *
@@ -221,7 +245,7 @@ public class Resources {
     public Display getDisplay() {
         return shell.getDisplay();
     }
-    
+
     /**
      * Returns the size of the gradient used in heatmaps.
      *
@@ -230,7 +254,7 @@ public class Resources {
     public int getGradientLength() {
         return 256;
     }
-    
+
     /**
      * Returns the logger.
      *
@@ -239,7 +263,7 @@ public class Resources {
     public Logger getLogger() {
         return logger;
     }
-    
+
     /**
      * Returns an image. Do not dispose the image.
      *
@@ -247,8 +271,10 @@ public class Resources {
      * @return
      */
     public Image getManagedImage(final String name) {
-        if (shell.isDisposed()) return null;
-        
+        if (shell.isDisposed()) {
+            return null;
+        }
+
         if (imageCache.containsKey(name)) {
             return imageCache.get(name);
         } else {
@@ -257,7 +283,7 @@ public class Resources {
             return image;
         }
     }
-    
+
     /**
      * Returns the shell.
      *
@@ -266,7 +292,7 @@ public class Resources {
     public Shell getShell() {
         return shell;
     }
-    
+
     /**
      * Returns a stream.
      *
@@ -276,20 +302,20 @@ public class Resources {
     public InputStream getStream(final String name) {
         return this.getClass().getResourceAsStream(name);
     }
-    
+
     /**
      * Returns an image.
-     * 
+     *
      * @param type
      * @return
      */
     public Image getImage(AttributeType type) {
         return getImage(type, false);
     }
-    
+
     /**
      * Returns an image.
-     * 
+     *
      * @param type
      * @param isResponseVariable
      * @return
@@ -323,7 +349,7 @@ public class Resources {
             throw new IllegalArgumentException("Unknown attribute type '" + type + "'");
         }
     }
-    
+
     /**
      * Returns an image.
      *
@@ -331,8 +357,10 @@ public class Resources {
      * @return
      */
     private Image getImage(final String name) {
-        if (shell.isDisposed()) return null;
-        
+        if (shell.isDisposed()) {
+            return null;
+        }
+
         InputStream imageStream = this.getClass().getResourceAsStream(name);
         try {
             final Image image = new Image(shell.getDisplay(), imageStream);

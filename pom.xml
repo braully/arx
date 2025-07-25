@@ -20,14 +20,23 @@
             <id>jitpack.io</id>
             <url>https://jitpack.io</url>
         </repository>
+        <repository>
+            <id>maven.d4science.org</id>
+            <url>https://maven.d4science.org/nexus/content/repositories/dnet-deps/</url>
+        </repository>
     </repositories>
     <build>
         <finalName>${project.artifactId}-${project.version}-${envClassifier}</finalName>
         <!--<testSourceDirectory>src/test</testSourceDirectory>-->
-        <resources>
-            <!--            <resource>
-                <directory>src/gui</directory>
-                <includes>
+        <!--        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                                <includes>
+                    <include>**/*.properties</include>
+                    <include>**/*.png</include>
+                    <include>**/*.gif</include>
+                    <include>**/*.pdf</include>
+                    <include>**/*.csv</include>
                     <include>**/*.properties</include>
                     <include>**/*.png</include>
                     <include>**/*.gif</include>
@@ -35,18 +44,8 @@
                     <include>**/*.txt</include>
                     <include>**/*.r</include>
                 </includes>
-            </resource>-->
-            <resource>
-                <directory>src/main</directory>
-                <includes>
-                    <include>**/*.properties</include>
-                    <include>**/*.png</include>
-                    <include>**/*.gif</include>
-                    <include>**/*.pdf</include>
-                    <include>**/*.csv</include>
-                </includes>
             </resource>
-        </resources>
+        </resources>-->
         <plugins>
             <!--            <plugin>
                 <groupId>org.codehaus.mojo</groupId>
@@ -398,7 +397,13 @@
         <dependency>
             <groupId>org.eclipse</groupId>
             <artifactId>draw2d</artifactId>
-            <version>3.2.100-v20070529</version>
+            <version>3.4.0</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>*</groupId>
+                    <artifactId>*</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
         <!-- https://mvnrepository.com/artifact/org.eclipse.platform/org.eclipse.equinox.common -->
         <dependency>
@@ -410,7 +415,7 @@
         <dependency>
             <groupId>org.eclipse.platform</groupId>
             <artifactId>org.eclipse.jface</artifactId>
-            <version>3.20.0</version>
+            <version>3.22.100</version>
         </dependency>
 
         <!--local dependencies-->
@@ -426,7 +431,19 @@
             </exclusions>
         </dependency>
         
-<!--        <dependency>
+        <!--        <dependency>
+            <groupId>org.eclipse.platform</groupId>
+            <artifactId>org.eclipse.swt.gtk.linux.x86_64</artifactId>
+            <version>3.114.100</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>*</groupId>
+                    <artifactId>*</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        -->
+        <!--        <dependency>
             <groupId>org.eclipse.platform</groupId>
             <artifactId>org.eclipse.swt.gtk.linux.x86_64</artifactId>
             <version>3.130.0</version>
@@ -691,7 +708,7 @@
                 <dependency>
                     <groupId>org.eclipse.platform</groupId>
                     <artifactId>org.eclipse.swt.win32.win32.x86_64</artifactId>
-                    <version>3.114.100</version>
+                    <version>3.4.0</version>
                     <exclusions>
                         <exclusion>
                             <groupId>*</groupId>
@@ -721,12 +738,23 @@
                     <groupId>org.eclipse.platform</groupId>
                     <artifactId>org.eclipse.swt.gtk.linux.x86_64</artifactId>
                     <version>3.114.100</version>
-                    <exclusions>
+<!--                    <exclusions>
                         <exclusion>
                             <groupId>*</groupId>
                             <artifactId>*</artifactId>
                         </exclusion>
-                    </exclusions>
+                    </exclusions>-->
+                </dependency>
+                <dependency>
+                    <groupId>org.eclipse.platform</groupId>
+                    <artifactId>org.eclipse.swt</artifactId>
+                    <version>3.114.100</version>
+<!--                    <exclusions>
+                        <exclusion>
+                            <groupId>*</groupId>
+                            <artifactId>*</artifactId>
+                        </exclusion>
+                    </exclusions>-->
                 </dependency>
             </dependencies>
         </profile>
@@ -740,7 +768,7 @@
             </activation>
             <build>
                 <finalName>${project.artifactId}-${project.version}-${envClassifier}</finalName>
-                <resources>
+                <!--                <resources>
                     <resource>
                         <directory>src/main</directory>
                         <includes>
@@ -751,7 +779,7 @@
                             <include>**/*.csv</include>
                         </includes>
                     </resource>
-                </resources>
+                </resources>-->
                 <plugins>
                     <plugin>
                         <groupId>org.codehaus.mojo</groupId>
