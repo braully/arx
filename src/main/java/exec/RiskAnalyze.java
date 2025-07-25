@@ -53,10 +53,10 @@ public class RiskAnalyze {
         // AttributeType.QUASI_IDENTIFYING_ATTRIBUTE);
         String csvFile = "data/example.csv";
         String[] quasiAtributes = new String[] {
-                "education", "workclass", "salary-class"
+                "education", 
         };
         String[] insesitiveAttibutes = new String[] {
-                "sex", "age", "race", "marital-status", "native-country", "occupation"
+                "sex", "age", "race", "marital-status", "native-country", "occupation", "workclass", "salary-class"
         };
 
         Data data = Data.create(csvFile, StandardCharsets.UTF_8, ';');
