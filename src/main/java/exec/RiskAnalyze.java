@@ -93,7 +93,8 @@ public class RiskAnalyze {
         RiskEstimateBuilder builder = handle.getRiskEstimator(populationmodel);
         RiskModelSampleSummary risks = builder.getSampleBasedRiskSummary(THRESHOLD);
 
-        System.out.println(" * Baseline risk threshold: " + getPrecent(THRESHOLD));
+        System.out.println(" Attacker models ");
+        System.out.println(" * Main Highest risk " + getPrecent(THRESHOLD));
         System.out.println(" * Prosecutor attacker model");
         System.out.println("   - Records at risk: " + getPrecent(risks.getProsecutorRisk().getRecordsAtRisk()));
         System.out.println("   - Highest risk: " + getPrecent(risks.getProsecutorRisk().getHighestRisk()));
@@ -137,18 +138,19 @@ public class RiskAnalyze {
          * Population model;DANKAR
          * Quasi-identifiers;
          */
-        System.out.println("Lowest prosecutor risk: " + getPrecent(lowestRisk));
-        System.out.println("Records affected by lowest risk: " + getPrecent(fractionOfTuplesAffectedByLowestRisk));
-        System.out.println("Average prosecutor risk: " + getPrecent(averageRisk));
-        System.out.println("Highest prosecutor risk: " + getPrecent(highestRisk));
-        System.out.println("Records affected by highest risk: " + getPrecent(fractionOfTuplesAffectedByHighestRisk));
-        System.out.println("Estimated prosecutor risk: " + getPrecent(estimatedProsecutorRisk));
-        System.out.println("Estimated journalist risk: " + getPrecent(estimatedJournalistRisk));
-        System.out.println("Estimated marketer risk: " + getPrecent(estimatedMarketerRisk));
-        System.out.println("Sample uniques: " + getPrecent(fractionOfUniqueTuples));
-        System.out.println("Population uniques: " + getPrecent(fractionOfUniqueTuplesDankar));
-        System.out.println("Population model: " + populationModel);
-        System.out.println("Quasi-identifiers: " + quasiIdentifiers);
+        System.out.println("Overview" + getPrecent(lowestRisk));
+        System.out.println("* Lowest prosecutor risk: " + getPrecent(lowestRisk));
+        System.out.println("* Records affected by lowest risk: " + getPrecent(fractionOfTuplesAffectedByLowestRisk));
+        System.out.println("* Average prosecutor risk: " + getPrecent(averageRisk));
+        System.out.println("* Highest prosecutor risk: " + getPrecent(highestRisk));
+        System.out.println("* Records affected by highest risk: " + getPrecent(fractionOfTuplesAffectedByHighestRisk));
+        System.out.println("* Estimated prosecutor risk: " + getPrecent(estimatedProsecutorRisk));
+        System.out.println("* Estimated journalist risk: " + getPrecent(estimatedJournalistRisk));
+        System.out.println("* Estimated marketer risk: " + getPrecent(estimatedMarketerRisk));
+        System.out.println("* Sample uniques: " + getPrecent(fractionOfUniqueTuples));
+        System.out.println("* Population uniques: " + getPrecent(fractionOfUniqueTuplesDankar));
+        System.out.println("* Population model: " + populationModel);
+        System.out.println("* Quasi-identifiers: " + quasiIdentifiers);
 
     }
 
