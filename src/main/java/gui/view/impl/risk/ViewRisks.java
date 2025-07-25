@@ -282,6 +282,8 @@ public abstract class ViewRisks<T extends AnalysisContextVisualization> implemen
         if (analysisContext.getData() == null || analysisContext.getData().definition == null) {
             return null;
         }
+        System.out.println("DATA HANDLE: " +  context.handle);
+        System.out.println("CONTEXT: ");
         return context.handle.getRiskEstimator(analysisContext.getPopulationModel(),
                                                analysisContext.getData().definition.getQuasiIdentifyingAttributes(),
                                                analysisContext.getModel().getRiskModel().getSolverConfiguration())

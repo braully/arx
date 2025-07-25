@@ -22,32 +22,36 @@ import de.linearbits.newtonraphson.NewtonRaphsonConfiguration;
 
 /**
  * Runtime configuration for the solver
+ * 
  * @author prasser
  *
  */
-public class ARXSolverConfiguration extends NewtonRaphsonConfiguration<ARXSolverConfiguration>{
+public class ARXSolverConfiguration extends NewtonRaphsonConfiguration<ARXSolverConfiguration> {
 
-    /** SVUID*/
+    /** SVUID */
     private static final long serialVersionUID = -7122709349147064168L;
 
     /**
      * Creates a new instance
+     * 
      * @return
      */
     public static ARXSolverConfiguration create() {
         return new ARXSolverConfiguration();
     }
-    
+
     /**
-     * Default value. 
+     * Default value.
+     * 
      * @return
      */
     public static double getDefaultAccuracy() {
         return 1e-6;
     }
-    
+
     /**
-     * Default value. 
+     * Default value.
+     * 
      * @return
      */
     public static boolean getDefaultDeterministic() {
@@ -55,7 +59,8 @@ public class ARXSolverConfiguration extends NewtonRaphsonConfiguration<ARXSolver
     }
 
     /**
-     * Default value. 
+     * Default value.
+     * 
      * @return
      */
     public static int getDefaultIterationsPerTry() {
@@ -63,7 +68,8 @@ public class ARXSolverConfiguration extends NewtonRaphsonConfiguration<ARXSolver
     }
 
     /**
-     * Default value. 
+     * Default value.
+     * 
      * @return
      */
     public static int getDefaultIterationsTotal() {
@@ -71,7 +77,9 @@ public class ARXSolverConfiguration extends NewtonRaphsonConfiguration<ARXSolver
     }
 
     /**
-     * Default value. Returns a set of start values for the solver in range [0,1][0,1]
+     * Default value. Returns a set of start values for the solver in range
+     * [0,1][0,1]
+     * 
      * @return
      */
     public static double[][] getDefaultStartValues() {
@@ -86,7 +94,8 @@ public class ARXSolverConfiguration extends NewtonRaphsonConfiguration<ARXSolver
     }
 
     /**
-     * Default value. 
+     * Default value.
+     * 
      * @return
      */
     public static int getDefaultTimePerTry() {
@@ -94,21 +103,22 @@ public class ARXSolverConfiguration extends NewtonRaphsonConfiguration<ARXSolver
     }
 
     /**
-     * Default value. 
+     * Default value.
+     * 
      * @return
      */
     public static int getDefaultTimeTotal() {
         return 1000;
     }
 
-    /** Modified*/
+    /** Modified */
     private boolean modified = false;
-    
+
     /**
      * Creates a new instance
      */
     private ARXSolverConfiguration() {
-        
+
         // Set default values
         this.accuracy(getDefaultAccuracy());
         this.iterationsPerTry(getDefaultIterationsPerTry());
@@ -142,6 +152,7 @@ public class ARXSolverConfiguration extends NewtonRaphsonConfiguration<ARXSolver
 
     /**
      * Returns whether the solving process is deterministic
+     * 
      * @return
      */
     public boolean isDeterministic() {
@@ -150,6 +161,7 @@ public class ARXSolverConfiguration extends NewtonRaphsonConfiguration<ARXSolver
 
     /**
      * Modified
+     * 
      * @return
      */
     public boolean isModified() {
@@ -171,19 +183,20 @@ public class ARXSolverConfiguration extends NewtonRaphsonConfiguration<ARXSolver
         }
         return super.iterationsTotal(arg0);
     }
-    
+
     @Override
     public ARXSolverConfiguration preparedStartValues(double[][] values) {
-        if ((super.getStartValues() == null && values != null) || 
-            (values == null && super.getStartValues() != null) ||
-            (values != null && !Arrays.equals(super.getStartValues(), values))) {
+        if ((super.getStartValues() == null && values != null) ||
+                (values == null && super.getStartValues() != null) ||
+                (values != null && !Arrays.equals(super.getStartValues(), values))) {
             modified = true;
         }
         return super.preparedStartValues(values);
     }
-    
+
     /**
      * Sets the solving process to be deterministic
+     * 
      * @param deterministic
      * @return
      */
@@ -205,12 +218,20 @@ public class ARXSolverConfiguration extends NewtonRaphsonConfiguration<ARXSolver
         }
         return super.timePerTry(arg0);
     }
-    
+
     @Override
     public ARXSolverConfiguration timeTotal(int arg0) {
         if (arg0 != super.getTimeTotal()) {
             modified = true;
         }
         return super.timeTotal(arg0);
+    }
+
+    @Override
+    public String toString() {
+        return "ARXSolverConfiguration [accuracy=" + getAccuracy() + ", iterationsPerTry=" + getIterationsPerTry()
+                + ", iterationsTotal=" + getIterationsTotal() + ", timePerTry=" + getTimePerTry() + ", timeTotal="
+                + getTimeTotal() + ", startValues=" + Arrays.toString(getStartValues()) + ", modified=" + modified
+                + "]";
     }
 }

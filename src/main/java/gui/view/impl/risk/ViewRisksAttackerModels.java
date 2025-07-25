@@ -355,7 +355,7 @@ public class ViewRisksAttackerModels extends ViewRisks<AnalysisContextRisk> {
 
                 // Timestamp
                 long time = System.currentTimeMillis();
-                System.out.println("CALCULANDO NOVO RISCO: " + model.getRiskModel().getRiskThresholdHighestRisk());
+                System.out.println("CALCULANDO NOVO RISCO: HighestRisk=" + model.getRiskModel().getRiskThresholdHighestRisk());
 
                 // Perform work
                 RiskModelSampleSummary summary = builder

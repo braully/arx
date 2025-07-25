@@ -25,8 +25,8 @@ import java.io.Serializable;
  */
 public class ARXPopulationModel implements Serializable {
 
-    /** Regions*/
-    public static enum Region implements Serializable{
+    /** Regions */
+    public static enum Region implements Serializable {
 
         NONE("None", 0l),
         AFRICA("Africa", 1100000000l),
@@ -47,10 +47,11 @@ public class ARXPopulationModel implements Serializable {
         /** Field */
         private final String name;
         /** Field */
-        private final long   population;
-        
+        private final long population;
+
         /**
          * Creates a new instance
+         * 
          * @param name
          * @param population
          */
@@ -79,54 +80,58 @@ public class ARXPopulationModel implements Serializable {
 
     /**
      * Creates a new instance
+     * 
      * @param sampleSize
      * @param samplingFraction
      * @return
      */
-    public static ARXPopulationModel create(int sampleSize, double samplingFraction){
+    public static ARXPopulationModel create(int sampleSize, double samplingFraction) {
         return new ARXPopulationModel(sampleSize, samplingFraction);
     }
 
     /**
      * Creates a new instance
+     * 
      * @param populationSize
      * @return
      */
-    public static ARXPopulationModel create(long populationSize){
+    public static ARXPopulationModel create(long populationSize) {
         return new ARXPopulationModel(populationSize);
     }
 
     /**
      * Creates a new instance
+     * 
      * @param region
      * @return
      */
-    public static ARXPopulationModel create(Region region){
+    public static ARXPopulationModel create(Region region) {
         return new ARXPopulationModel(region);
     }
 
     /** The region */
-    private Region region         = Region.NONE;
+    private Region region = Region.NONE;
 
-    /** TODO: This field is here for backwards compatibility only!*/
+    /** TODO: This field is here for backwards compatibility only! */
     private double sampleFraction = 0.01d;
 
     /** The sample fraction */
-    private Long   populationSize;
-    
+    private Long populationSize;
 
     /**
      * Creates a new instance
+     * 
      * @param sampleSize
      * @param samplingFraction
      */
     private ARXPopulationModel(int sampleSize, double samplingFraction) {
         this.region = Region.NONE;
-        this.populationSize = (long)(Math.round((double)sampleSize / samplingFraction));
+        this.populationSize = (long) (Math.round((double) sampleSize / samplingFraction));
     }
 
     /**
      * Creates a new instance
+     * 
      * @param populationSize
      */
     private ARXPopulationModel(long populationSize) {
@@ -136,6 +141,7 @@ public class ARXPopulationModel implements Serializable {
 
     /**
      * Creates a new instance
+     * 
      * @param region
      */
     private ARXPopulationModel(Region region) {
@@ -145,6 +151,7 @@ public class ARXPopulationModel implements Serializable {
 
     /**
      * Clone constructor
+     * 
      * @param sampleFraction
      */
     private ARXPopulationModel(Region region, long populationSize) {
@@ -158,9 +165,10 @@ public class ARXPopulationModel implements Serializable {
     public ARXPopulationModel clone() {
         return new ARXPopulationModel(region, populationSize);
     }
-    
+
     /**
      * Returns the population size
+     * 
      * @return
      */
     public long getPopulationSize() {
@@ -173,7 +181,7 @@ public class ARXPopulationModel implements Serializable {
     public Region getRegion() {
         return region;
     }
-    
+
     @Deprecated
     public void makeBackwardsCompatible(int sampleSize) {
         if (populationSize == null) {
@@ -182,6 +190,18 @@ public class ARXPopulationModel implements Serializable {
             } else {
                 populationSize = region.getPopulationSize();
             }
+        }
+    }
+
+    // To String
+    @Override
+    public String toString() {
+        if (region != null && region != Region.NONE) {
+            return "Population Model: " + region.getName() + " (" + region.getPopulationSize() + ")";
+        } else if (populationSize != null) {
+            return "Population Model: " + populationSize;
+        } else {
+            return "Population Model: Unknown";
         }
     }
 }

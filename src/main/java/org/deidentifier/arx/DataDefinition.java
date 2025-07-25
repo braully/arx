@@ -805,4 +805,17 @@ public class DataDefinition implements Cloneable{
     protected void setLocked(boolean locked){
         this.locked = locked;
     }
+
+    //tostring
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("DataDefinition [locked=").append(locked).append(", attributeTypes=").append(attributeTypes)
+          .append(", inverseAttributeTypes=").append(inverseAttributeTypes).append(", builders=").append(builders)
+          .append(", hierarchies=").append(hierarchies).append(", functions=").append(functions)
+          .append(", dataTypes=").append(dataTypes).append(", minGeneralization=").append(minGeneralization)
+          .append(", maxGeneralization=").append(maxGeneralization).append(", clustering=").append(clustering)
+          .append(", response=").append(response).append("]");
+        return sb.toString();
+    }
 }

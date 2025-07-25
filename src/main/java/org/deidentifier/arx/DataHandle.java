@@ -68,26 +68,26 @@ import com.carrotsearch.hppc.ObjectIntOpenHashMap;
 public abstract class DataHandle {
 
     /** The data types. */
-    protected DataType<?>[]                columnToDataType = null;
+    protected DataType<?>[] columnToDataType = null;
 
     /** The data definition. */
-    protected DataDefinition               definition       = null;
+    protected DataDefinition definition = null;
 
     /** The header. */
-    protected String[]                     header           = null;
+    protected String[] header = null;
 
     /** The header. */
-    protected ObjectIntOpenHashMap<String> headerMap        = null;
+    protected ObjectIntOpenHashMap<String> headerMap = null;
 
     /** The node. */
-    protected ARXNode                      node             = null;
+    protected ARXNode node = null;
 
     /** The current registry. */
-    protected DataRegistry                 registry         = null;
+    protected DataRegistry registry = null;
 
     /** The current research subset. */
-    protected DataHandle                   subset           = null;
-    
+    protected DataHandle subset = null;
+
     /**
      * Returns the name of the specified column.
      *
@@ -135,7 +135,7 @@ public abstract class DataHandle {
             throw new ParseException("Invalid datatype: " + type.getClass().getSimpleName(), col);
         }
     }
-    
+
     /**
      * Returns the data definition.
      *
@@ -250,9 +250,11 @@ public abstract class DataHandle {
     }
 
     /**
-     * Returns a mapping from data types to the relative number of values that conform to the according type.
+     * Returns a mapping from data types to the relative number of values that
+     * conform to the according type.
      * This method uses the default locale.
-     * This method only returns types that match at least 80% of all values in the column .
+     * This method only returns types that match at least 80% of all values in the
+     * column .
      *
      * @param column the column
      * @return the matching data types
@@ -262,13 +264,15 @@ public abstract class DataHandle {
     }
 
     /**
-     * Returns a mapping from data types to the relative number of values that conform to the according type for a given wrapped class.
+     * Returns a mapping from data types to the relative number of values that
+     * conform to the according type for a given wrapped class.
      * This method uses the default locale.
-     * This method only returns types that match at least 80% of all values in the column .
+     * This method only returns types that match at least 80% of all values in the
+     * column .
      *
-     * @param <U> the generic type
+     * @param <U>    the generic type
      * @param column the column
-     * @param clazz The wrapped class
+     * @param clazz  The wrapped class
      * @return the matching data types
      */
     public <U> List<Pair<DataType<?>, Double>> getMatchingDataTypes(int column, Class<U> clazz) {
@@ -276,13 +280,15 @@ public abstract class DataHandle {
     }
 
     /**
-     * Returns a mapping from data types to the relative number of values that conform to the according type for a given wrapped class.
+     * Returns a mapping from data types to the relative number of values that
+     * conform to the according type for a given wrapped class.
      * This method uses the default locale.
      *
-     * @param <U> the generic type
-     * @param column the column
-     * @param clazz The wrapped class
-     * @param threshold Relative minimal number of values that must match to include a data type in the results
+     * @param <U>       the generic type
+     * @param column    the column
+     * @param clazz     The wrapped class
+     * @param threshold Relative minimal number of values that must match to include
+     *                  a data type in the results
      * @return the matching data types
      */
     public <U> List<Pair<DataType<?>, Double>> getMatchingDataTypes(int column, Class<U> clazz, double threshold) {
@@ -290,12 +296,14 @@ public abstract class DataHandle {
     }
 
     /**
-     * Returns a mapping from data types to the relative number of values that conform to the according type for a given wrapped class.
-     * This method only returns types that match at least 80% of all values in the column .
+     * Returns a mapping from data types to the relative number of values that
+     * conform to the according type for a given wrapped class.
+     * This method only returns types that match at least 80% of all values in the
+     * column .
      *
-     * @param <U> the generic type
+     * @param <U>    the generic type
      * @param column the column
-     * @param clazz The wrapped class
+     * @param clazz  The wrapped class
      * @param locale The locale to use
      * @return the matching data types
      */
@@ -304,16 +312,19 @@ public abstract class DataHandle {
     }
 
     /**
-     * Returns a mapping from data types to the relative number of values that conform to the according type for a given wrapped class.
+     * Returns a mapping from data types to the relative number of values that
+     * conform to the according type for a given wrapped class.
      *
-     * @param <U> the generic type
-     * @param column the column
-     * @param clazz The wrapped class
-     * @param locale The locale to use
-     * @param threshold Relative minimal number of values that must match to include a data type in the results
+     * @param <U>       the generic type
+     * @param column    the column
+     * @param clazz     The wrapped class
+     * @param locale    The locale to use
+     * @param threshold Relative minimal number of values that must match to include
+     *                  a data type in the results
      * @return the matching data types
      */
-    public <U> List<Pair<DataType<?>, Double>> getMatchingDataTypes(int column, Class<U> clazz, Locale locale, double threshold) {
+    public <U> List<Pair<DataType<?>, Double>> getMatchingDataTypes(int column, Class<U> clazz, Locale locale,
+            double threshold) {
 
         checkReleased();
         checkColumn(column);
@@ -342,11 +353,13 @@ public abstract class DataHandle {
     }
 
     /**
-     * Returns a mapping from data types to the relative number of values that conform to the according type.
+     * Returns a mapping from data types to the relative number of values that
+     * conform to the according type.
      * This method uses the default locale.
      *
-     * @param column the column
-     * @param threshold Relative minimal number of values that must match to include a data type in the results
+     * @param column    the column
+     * @param threshold Relative minimal number of values that must match to include
+     *                  a data type in the results
      * @return the matching data types
      */
     public List<Pair<DataType<?>, Double>> getMatchingDataTypes(int column, double threshold) {
@@ -354,8 +367,10 @@ public abstract class DataHandle {
     }
 
     /**
-     * Returns a mapping from data types to the relative number of values that conform to the according type
-     * This method only returns types that match at least 80% of all values in the column .
+     * Returns a mapping from data types to the relative number of values that
+     * conform to the according type
+     * This method only returns types that match at least 80% of all values in the
+     * column .
      *
      * @param column the column
      * @param locale The locale to use
@@ -366,11 +381,13 @@ public abstract class DataHandle {
     }
 
     /**
-     * Returns a mapping from data types to the relative number of values that conform to the according type.
+     * Returns a mapping from data types to the relative number of values that
+     * conform to the according type.
      *
-     * @param column the column
-     * @param locale The locale to use
-     * @param threshold Relative minimal number of values that must match to include a data type in the results
+     * @param column    the column
+     * @param locale    The locale to use
+     * @param threshold Relative minimal number of values that must match to include
+     *                  a data type in the results
      * @return the matching data types
      */
     public List<Pair<DataType<?>, Double>> getMatchingDataTypes(int column, Locale locale, double threshold) {
@@ -382,22 +399,23 @@ public abstract class DataHandle {
         result.addAll(getMatchingDataTypes(column, Date.class, locale, threshold));
         result.addAll(getMatchingDataTypes(column, Double.class, locale, threshold));
         result.add(new Pair<DataType<?>, Double>(DataType.STRING, 1.0d));
-        
+
         // Sort order
         final Map<Class<?>, Integer> order = new HashMap<Class<?>, Integer>();
         order.put(Long.class, 0);
         order.put(Date.class, 1);
         order.put(Double.class, 2);
         order.put(String.class, 3);
-        
+
         // Sort
         Collections.sort(result, new Comparator<Pair<DataType<?>, Double>>() {
             public int compare(Pair<DataType<?>, Double> o1, Pair<DataType<?>, Double> o2) {
-                
+
                 // Sort by matching quality
                 int cmp = o1.getSecond().compareTo(o2.getSecond());
-                if (cmp != 0) return -cmp;
-                
+                if (cmp != 0)
+                    return -cmp;
+
                 // Sort by order
                 int order1 = order.get(o1.getFirst().getDescription().getWrappedClass());
                 int order2 = order.get(o2.getFirst().getDescription().getWrappedClass());
@@ -411,8 +429,8 @@ public abstract class DataHandle {
      * Returns a set of values that do not conform to the given data type.
      *
      * @param column The column to test
-     * @param type The type to test
-     * @param max The maximal number of values returned by this method
+     * @param type   The type to test
+     * @param max    The maximal number of values returned by this method
      * @return the non conforming values
      */
     public String[] getNonConformingValues(int column, DataType<?> type, int max) {
@@ -441,7 +459,7 @@ public abstract class DataHandle {
      * Returns the number of (distinct) values that conform to the given data type.
      *
      * @param column The column to test
-     * @param type The type to test
+     * @param type   The type to test
      * @return the num conforming values
      */
     public int getNumConformingValues(int column, DataType<?> type) {
@@ -463,6 +481,7 @@ public abstract class DataHandle {
 
     /**
      * Returns a risk estimator, using the US population if required
+     * 
      * @return
      */
     public RiskEstimateBuilder getRiskEstimator() {
@@ -471,6 +490,7 @@ public abstract class DataHandle {
 
     /**
      * Returns a risk estimator
+     * 
      * @param model
      * @return
      */
@@ -480,6 +500,7 @@ public abstract class DataHandle {
 
     /**
      * Returns a risk estimator
+     * 
      * @param model
      * @param config
      * @return
@@ -487,9 +508,11 @@ public abstract class DataHandle {
     public RiskEstimateBuilder getRiskEstimator(ARXPopulationModel model, ARXSolverConfiguration config) {
         return getRiskEstimator(model, getDefinition().getQuasiIdentifyingAttributes(), config);
     }
-    
+
     /**
-     * Returns a risk estimator for the given set of equivalence classes. Saves resources by re-using existing classes
+     * Returns a risk estimator for the given set of equivalence classes. Saves
+     * resources by re-using existing classes
+     * 
      * @param model
      * @param classes
      * @return
@@ -499,18 +522,22 @@ public abstract class DataHandle {
     }
 
     /**
-     * Returns a risk estimator for the given set of equivalence classes. Saves resources by re-using existing classes
+     * Returns a risk estimator for the given set of equivalence classes. Saves
+     * resources by re-using existing classes
+     * 
      * @param model
      * @param classes
      * @param config
      * @return
      */
-    public RiskEstimateBuilder getRiskEstimator(ARXPopulationModel model, RiskModelHistogram classes, ARXSolverConfiguration config) {
+    public RiskEstimateBuilder getRiskEstimator(ARXPopulationModel model, RiskModelHistogram classes,
+            ARXSolverConfiguration config) {
         return new RiskEstimateBuilder(model, new DataHandleInternal(this), classes, config, getConfiguration());
     }
 
     /**
      * Returns a risk estimator for the given set of quasi-identifiers
+     * 
      * @param model
      * @param qis
      * @return
@@ -521,17 +548,26 @@ public abstract class DataHandle {
 
     /**
      * Returns a risk estimator for the given set of quasi-identifiers
+     * 
      * @param model
      * @param qis
      * @param config
      * @return
      */
-    public RiskEstimateBuilder getRiskEstimator(ARXPopulationModel model, Set<String> qis, ARXSolverConfiguration config) {
+    public RiskEstimateBuilder getRiskEstimator(ARXPopulationModel model, Set<String> qis,
+            ARXSolverConfiguration config) {
+        System.out.println("CONTEXT: ");
+        System.out.println("Population Model: " + model);
+        System.out.println("Quasi Identifying Attributes: "
+                + qis);
+        System.out
+                .println("Solver Configuration: " + config);
         return new RiskEstimateBuilder(model, new DataHandleInternal(this), qis, config, getConfiguration());
     }
 
     /**
-     * Returns an object providing access to basic descriptive statistics about the data represented
+     * Returns an object providing access to basic descriptive statistics about the
+     * data represented
      * by this handle.
      *
      * @return the statistics
@@ -557,7 +593,8 @@ public abstract class DataHandle {
     public abstract String getValue(int row, int col);
 
     /**
-     * Returns a new data handle that represents a context specific view on the dataset.
+     * Returns a new data handle that represents a context specific view on the
+     * dataset.
      *
      * @return the view
      */
@@ -572,6 +609,7 @@ public abstract class DataHandle {
 
     /**
      * Has this handle been optimized with local recoding?
+     * 
      * @return
      */
     public boolean isOptimized() {
@@ -609,16 +647,17 @@ public abstract class DataHandle {
     public boolean isSuppressed(int row) {
         return isOutlier(row);
     }
-    
+
     /**
      * Returns an iterator over the data.
      *
      * @return the iterator
      */
     public abstract Iterator<String[]> iterator();
-    
+
     /**
-     * Releases this handle and all associated resources. If a input handle is released all associated results are released
+     * Releases this handle and all associated resources. If a input handle is
+     * released all associated results are released
      * as well.
      */
     public void release() {
@@ -629,6 +668,7 @@ public abstract class DataHandle {
 
     /**
      * Renders this object
+     * 
      * @return
      */
     public ElementData render() {
@@ -639,11 +679,12 @@ public abstract class DataHandle {
     }
 
     /**
-     * Replaces the original value with the replacement in the given column. Only supported by
+     * Replaces the original value with the replacement in the given column. Only
+     * supported by
      * handles for input data.
      *
-     * @param column the column
-     * @param original the original
+     * @param column      the column
+     * @param original    the original
      * @param replacement the replacement
      * @return Whether the original value was found
      */
@@ -676,7 +717,7 @@ public abstract class DataHandle {
     /**
      * Writes the data to a CSV file.
      *
-     * @param file A file
+     * @param file      A file
      * @param separator The utilized separator character
      * @throws IOException Signals that an I/O exception has occurred.
      */
@@ -689,7 +730,7 @@ public abstract class DataHandle {
     /**
      * Writes the data to a CSV file.
      *
-     * @param file the file
+     * @param file   the file
      * @param config the config
      * @throws IOException Signals that an I/O exception has occurred.
      */
@@ -714,7 +755,7 @@ public abstract class DataHandle {
     /**
      * Writes the data to a CSV file.
      *
-     * @param out Output stream
+     * @param out       Output stream
      * @param separator The utilized separator character
      * @throws IOException Signals that an I/O exception has occurred.
      */
@@ -727,7 +768,7 @@ public abstract class DataHandle {
     /**
      * Writes the data to a CSV file.
      *
-     * @param out the out
+     * @param out    the out
      * @param config the config
      * @throws IOException Signals that an I/O exception has occurred.
      */
@@ -752,7 +793,7 @@ public abstract class DataHandle {
     /**
      * Writes the data to a CSV file.
      *
-     * @param path A path
+     * @param path      A path
      * @param separator The utilized separator character
      * @throws IOException Signals that an I/O exception has occurred.
      */
@@ -765,7 +806,7 @@ public abstract class DataHandle {
     /**
      * Writes the data to a CSV file.
      *
-     * @param path the path
+     * @param path   the path
      * @param config the config
      * @throws IOException Signals that an I/O exception has occurred.
      */
@@ -787,7 +828,7 @@ public abstract class DataHandle {
      * output analogously.
      *
      * @param ascending Sort ascending or descending
-     * @param columns An integer array containing column indicides
+     * @param columns   An integer array containing column indicides
      */
     public void sort(boolean ascending, int... columns) {
         checkReleased();
@@ -798,10 +839,10 @@ public abstract class DataHandle {
      * Sorts the dataset according to the given columns and the given range.
      * Will sort input and output analogously.
      *
-     * @param from The lower bound
-     * @param to The upper bound
+     * @param from      The lower bound
+     * @param to        The upper bound
      * @param ascending Sort ascending or descending
-     * @param columns An integer array containing column indicides
+     * @param columns   An integer array containing column indicides
      */
     public void sort(int from, int to, boolean ascending, int... columns) {
         checkReleased();
@@ -812,9 +853,9 @@ public abstract class DataHandle {
      * Sorts the dataset according to the given columns. Will sort input and
      * output analogously.
      *
-     * @param swapper A swapper
+     * @param swapper   A swapper
      * @param ascending Sort ascending or descending
-     * @param columns An integer array containing column indicides
+     * @param columns   An integer array containing column indicides
      */
     public void sort(Swapper swapper, boolean ascending, int... columns) {
         checkReleased();
@@ -825,11 +866,11 @@ public abstract class DataHandle {
      * Sorts the dataset according to the given columns and the given range.
      * Will sort input and output analogously.
      *
-     * @param swapper A swapper
-     * @param from The lower bound
-     * @param to The upper bound
+     * @param swapper   A swapper
+     * @param from      The lower bound
+     * @param to        The upper bound
      * @param ascending Sort ascending or descending
-     * @param columns An integer array containing column indicides
+     * @param columns   An integer array containing column indicides
      */
     public void sort(Swapper swapper, int from, int to, boolean ascending, int... columns) {
         checkReleased();
@@ -854,7 +895,8 @@ public abstract class DataHandle {
      */
     protected void checkColumn(final int column1) {
         if ((column1 < 0) || (column1 > (header.length - 1))) {
-            throw new IndexOutOfBoundsException("Column index out of range: " + column1 + ". Valid: 0 - " + (header.length - 1));
+            throw new IndexOutOfBoundsException(
+                    "Column index out of range: " + column1 + ". Valid: 0 - " + (header.length - 1));
         }
     }
 
@@ -889,14 +931,15 @@ public abstract class DataHandle {
      */
     protected void checkReleased() {
         if (isReleased()) {
-            throw new RuntimeException("This data handle (" + this.getClass().getSimpleName() + "@" + hashCode() + ") has been released");
+            throw new RuntimeException(
+                    "This data handle (" + this.getClass().getSimpleName() + "@" + hashCode() + ") has been released");
         }
     }
 
     /**
      * Checks a row index.
      *
-     * @param row1 the row1
+     * @param row1   the row1
      * @param length the length
      */
     protected void checkRow(final int row1, final int length) {
@@ -929,7 +972,9 @@ public abstract class DataHandle {
     protected abstract DataType<?>[] getColumnToDataType();
 
     /**
-     * Returns the ARXConfiguration that is currently being used, null if this is an input handle
+     * Returns the ARXConfiguration that is currently being used, null if this is an
+     * input handle
+     * 
      * @return
      */
     protected abstract ARXConfiguration getConfiguration();
@@ -937,9 +982,9 @@ public abstract class DataHandle {
     /**
      * Returns the distinct values.
      *
-     * @param column the column
+     * @param column            the column
      * @param ignoreSuppression
-     * @param handler the handler
+     * @param handler           the handler
      * @return the distinct values
      */
     protected abstract String[] getDistinctValues(int column, boolean ignoreSuppression, InterruptHandler handler);
@@ -955,6 +1000,7 @@ public abstract class DataHandle {
 
     /**
      * Returns the internal value identifier
+     * 
      * @param column
      * @param value
      * @return
@@ -967,16 +1013,16 @@ public abstract class DataHandle {
      * data types for comparison. If no datatype is specified for a specific
      * column it uses string comparison.
      *
-     * @param row1 the row1
-     * @param row2 the row2
-     * @param columns the columns
+     * @param row1      the row1
+     * @param row2      the row2
+     * @param columns   the columns
      * @param ascending the ascending
      * @return the int
      */
     protected int internalCompare(final int row1,
-                                  final int row2,
-                                  final int[] columns,
-                                  final boolean ascending) {
+            final int row2,
+            final int[] columns,
+            final boolean ascending) {
 
         checkReleased();
         try {
@@ -984,7 +1030,7 @@ public abstract class DataHandle {
 
                 int index = columns[i];
                 int cmp = columnToDataType[index].compare(internalGetValue(row1, index, false),
-                                                   internalGetValue(row2, index, false));
+                        internalGetValue(row2, index, false));
                 if (cmp != 0) {
                     return ascending ? cmp : -cmp;
                 }
@@ -996,7 +1042,8 @@ public abstract class DataHandle {
     }
 
     /**
-     * Internal representation of get encoded value. Returns -1 for suppressed values.
+     * Internal representation of get encoded value. Returns -1 for suppressed
+     * values.
      *
      * @param row the row
      * @param col the col
@@ -1014,8 +1061,10 @@ public abstract class DataHandle {
     protected abstract String internalGetValue(int row, int col, boolean ignoreSuppression);
 
     /**
-     * Returns whether this is an outlier regarding the given columns. If no columns have been
+     * Returns whether this is an outlier regarding the given columns. If no columns
+     * have been
      * specified, <code>true</code> will be returned.
+     * 
      * @param row
      * @param columns
      * @return
@@ -1025,8 +1074,8 @@ public abstract class DataHandle {
     /**
      * Internal replacement method.
      *
-     * @param column the column
-     * @param original the original
+     * @param column      the column
+     * @param original    the original
      * @param replacement the replacement
      * @return true, if successful
      */
@@ -1034,6 +1083,7 @@ public abstract class DataHandle {
 
     /**
      * Returns whether the data represented by this handle is anonymous
+     * 
      * @return
      */
     protected boolean isAnonymous() {
@@ -1042,6 +1092,7 @@ public abstract class DataHandle {
 
     /**
      * Sets the current header
+     * 
      * @param header
      */
     protected void setHeader(String[] header) {
@@ -1051,7 +1102,7 @@ public abstract class DataHandle {
             headerMap.put(header[i], i);
         }
     }
-    
+
     /**
      * Updates the registry.
      *

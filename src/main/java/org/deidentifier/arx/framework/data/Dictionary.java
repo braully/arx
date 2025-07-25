@@ -20,6 +20,7 @@ package org.deidentifier.arx.framework.data;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.Serializable;
+import java.util.Arrays;
 
 import org.deidentifier.arx.DataType;
 
@@ -248,5 +249,15 @@ public class Dictionary implements Serializable {
                 }
             }
     	}
+    }
+
+    //toString
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("Dictionary [mapping=").append(Arrays.deepToString(mapping))
+          .append(", suppressed=").append(Arrays.toString(suppressed))
+          .append(", maps=").append(Arrays.toString(maps)).append("]");
+        return sb.toString();
     }
 }
